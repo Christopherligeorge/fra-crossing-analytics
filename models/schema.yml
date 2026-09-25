@@ -1,5 +1,16 @@
 version: 2
 models:
+  - name: audit_report_linkage
+    description: Report-year join coverage, separating eligible fact matches from out-of-cohort reports without discarding either.
+    columns:
+      - name: year
+        description: Form 57 report calendar year inside the panel study window.
+      - name: join_status
+        description: Matched to eligible fact or outside_eligible_panel; not a judgment about report validity.
+      - name: positive_crossing_years
+        description: Number of crossing/year report aggregates in this join category.
+      - name: reports
+        description: Total Form 57 reports represented by those aggregates.
   - name: stg_inventory_history
     description: Raw-preserving historical inventory with normalized ID, parsed revision date and conflict fingerprint. Numeric casts happen after ambiguity detection.
     columns: &inventory_columns
