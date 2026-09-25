@@ -1,0 +1,19 @@
+# Credentials and machine-local configuration (even example env files are excluded).
+.env
+.env.*
+profiles.yml
+.profiles/
+.venv*/
+__pycache__/
+*.py[cod]
+.DS_Store
+target/
+logs/
+dbt_packages/
+warehouse/
+data/
+artifacts/
+*.duckdb*
+*.parquet
+*.zip
+

@@ -1,0 +1,929 @@
+{
+  "release_id": "2026-09-06",
+  "design": "retrospective_revision_date_asof",
+  "started_at": "2026-09-06T10:42:10.350900+00:00",
+  "completed_at": "2026-09-06T10:50:51.389919+00:00",
+  "label_years": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "splits": {
+    "fit": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "calibration": [
+      2022
+    ],
+    "selection": [
+      2023
+    ],
+    "test": [
+      2024,
+      2025
+    ]
+  },
+  "eligibility": "Latest full inventory revision strictly before January 1; unambiguous; CrossingClosed=No, CrossingType=Public, CrossingPosition=At Grade. No current-open filter; purpose retained and not filtered.",
+  "tie_policy": "Same-date records identical on selected features/eligibility collapse; conflicting same-date latest records exclude the crossing-year.",
+  "feature_date_policy": "Revision strictly before label year; AADT/train measurements dated in/after label year masked; future gate installation masks gate count and signs/signals; future whistle date masks whistleban; negative numeric sentinels masked.",
+  "history_policy": "Only reports dated before label year; 1/3/5-year rolling windows; prewindow2009\u20132013.",
+  "limitations": [
+    "Retrospective reconstruction by reported revision/effective date. Neither inventory nor incident extracts establish when a revision/report first became publicly available; later corrections or reporting delays can remain. Not a real-time validation.",
+    "Eligibility is open/public/at-grade in the latest unambiguous pre-January-1 full inventory revision, not a guarantee of actual operation throughout that year. Missing earlier revisions, stale status and within-year closures remain possible.",
+    "A report absent from Form 57 is coded zero reports, not proof of no real incident. The target is a positive crossing-year; report counts are not deduplicated physical accidents.",
+    "2024 and 2025 are complete calendar years in the retrieved data, but late reports and future source corrections remain possible. The 2026 partial year is excluded.",
+    "Annual history is updated through the preceding calendar year, including 2024 reports when scoring 2025. This is annual updating, not a frozen two-year forecast.",
+    "The published historical dataset exposes full Major records only. Completeness of minor updates and the original reporting/processing timeline is not established.",
+    "Incident-history count and casualty features aggregate unique Form57 reports, not a verified physical-accident identifier; multi-report accidents can inflate these totals."
+  ],
+  "rows": 1526612,
+  "crossings": 138245,
+  "positive_crossing_years": 20403,
+  "form57_reports": 21677,
+  "inventory_source_rows": 5149418,
+  "inventory_distinct_source_row_ids_across_datasets": 5149418,
+  "inventory_rows_with_valid_date_and_id": 5149418,
+  "inventory_ids_normalized": 0,
+  "inventory_missing_or_empty_ids": 0,
+  "inventory_invalid_revision_dates": 0,
+  "universe_note": "Known IDs in retrieved pre2025 full records; without-prior-revision counts do not distinguish not-yet-existing crossings from missing historical records.",
+  "sources": [
+    {
+      "dataset_id": "vhwz-raag",
+      "metadata_url": "https://data.transportation.gov/api/views/vhwz-raag.json",
+      "name": "Crossing Inventory Data (Form 71) - Historical",
+      "metadata_path": "sources/vhwz-raag/metadata.json",
+      "metadata_sha256": "30e922a9ffad7aa34d4ecefb6cabb5deb3a93d5720db629e5dc24708f661990d",
+      "rows_updated_at": 1788547061,
+      "filtered_rows": 4873122,
+      "where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+      "pages": [
+        {
+          "path": "sources/vhwz-raag/page_00000000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=0&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 0,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:35:34.540302+00:00",
+          "rows": 100000,
+          "bytes": 21865614,
+          "sha256": "15c36e35a3723d4e0aaf6b62867be2bebb3f66079f40ac8fd3f7426b3073f26b"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00100000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=100000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 100000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:35:46.623734+00:00",
+          "rows": 100000,
+          "bytes": 21206556,
+          "sha256": "af8e9d4b37c80f119ab0a90d0c70aa9000306e53aa697776898302499ee3299d"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00200000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=200000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 200000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:35:35.128747+00:00",
+          "rows": 100000,
+          "bytes": 22269474,
+          "sha256": "76f358628475f7aeb0dae3f6ab1ba4d428d56b585cfbc9bbe3f99c31d2d422b6"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00300000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=300000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 300000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:35:30.397519+00:00",
+          "rows": 100000,
+          "bytes": 22685393,
+          "sha256": "d765f551d4a6e4d4b12d702213f1891c25d0e7282e15328ff9e6f6026ad346a8"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00400000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=400000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 400000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:35:45.080901+00:00",
+          "rows": 100000,
+          "bytes": 23209468,
+          "sha256": "9e7a393e71ba262d8ae876dc1cea2817fe32828fea3276cba71799e72bf9e79a"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00500000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=500000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 500000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:05.388338+00:00",
+          "rows": 100000,
+          "bytes": 23760991,
+          "sha256": "b65a135f90a853e9867d34b81bb6d7abf654d925ab912a08f17f8673390d713c"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00600000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=600000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 600000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:10.363708+00:00",
+          "rows": 100000,
+          "bytes": 25238089,
+          "sha256": "54e9b2307e3f6e5d6a0c15830d8c6289b05b9078cacdefa4463695a7112466e8"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00700000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=700000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 700000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:15.012400+00:00",
+          "rows": 100000,
+          "bytes": 25416799,
+          "sha256": "3179039f7aeb48465baf6b1739647ee062568907c361310d8e262c07cfe02d12"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00800000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=800000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 800000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:14.150449+00:00",
+          "rows": 100000,
+          "bytes": 25169561,
+          "sha256": "8f6012423a8edb642f931421f11c0b39457636ac462e8fa2b5ac640b70c438f4"
+        },
+        {
+          "path": "sources/vhwz-raag/page_00900000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=900000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 900000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:13.098736+00:00",
+          "rows": 100000,
+          "bytes": 21887354,
+          "sha256": "93bf3e04afafed0c497b659d400b11969d81cfe55a430890c40e3fc047dc3583"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01000000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1000000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1000000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:32.034197+00:00",
+          "rows": 100000,
+          "bytes": 22349666,
+          "sha256": "b51eb9e3c60916647013ae32b91ef00d1745cb986e8433e25c1906fae96b7e7b"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01100000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1100000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1100000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:45.248554+00:00",
+          "rows": 100000,
+          "bytes": 21869328,
+          "sha256": "ac5f3388cc32cd62cf37f548469a24898ddca810c1be13e6c4bf3c7df1444fdd"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01200000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1200000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1200000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:47.328615+00:00",
+          "rows": 100000,
+          "bytes": 23065335,
+          "sha256": "3a31ddb98dced4f99accb7e5ae07ea6bcda5c12561052a5a96e787a467a10386"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01300000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1300000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1300000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:47.224609+00:00",
+          "rows": 100000,
+          "bytes": 24021214,
+          "sha256": "245035c8664996500722903e5096140c4028b320950b1e14672c9b39c476174e"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01400000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1400000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1400000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:36:59.260692+00:00",
+          "rows": 100000,
+          "bytes": 25219077,
+          "sha256": "e4e1bc91d9b55e7c841a6964742baa7cd2f39def745e92b2641d58527f8dabc2"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01500000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1500000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1500000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:10.403077+00:00",
+          "rows": 100000,
+          "bytes": 23409396,
+          "sha256": "ef188d0b64577039a67dba2d11cde0b9ed937721a34ebf9e45149f152c66a93a"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01600000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1600000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1600000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:11.051137+00:00",
+          "rows": 100000,
+          "bytes": 23916286,
+          "sha256": "e6a5597f8f2b872ae1bd828e59bb35be927f0335140527025af0253ea8a2d675"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01700000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1700000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1700000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:12.243675+00:00",
+          "rows": 100000,
+          "bytes": 24365645,
+          "sha256": "cc91ef2327f7c5208655c58c715ec1dab15f3cddf4ad1e8a2a4e8f1d0c0c7592"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01800000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1800000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1800000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:19.500381+00:00",
+          "rows": 100000,
+          "bytes": 22844230,
+          "sha256": "e0073f28d9b1c3fd146423e51e019bffeba4adc90a106608c6eed147e1e94d1c"
+        },
+        {
+          "path": "sources/vhwz-raag/page_01900000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=1900000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 1900000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:34.173134+00:00",
+          "rows": 100000,
+          "bytes": 22936764,
+          "sha256": "d84a09f969fe3222392dc50daf6530873878b8922c284095aea9055eb0e0b2eb"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02000000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2000000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2000000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:36.764409+00:00",
+          "rows": 100000,
+          "bytes": 24334918,
+          "sha256": "a98b9c4023917deb50521bda210e117fa7a462a2a6d7e13393e836668715fd42"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02100000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2100000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2100000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:46.322922+00:00",
+          "rows": 100000,
+          "bytes": 25685719,
+          "sha256": "47d6c3f351bb059ca53e4203db6406c4c2ca09b10329ecf05166ea6f69fcc23c"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02200000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2200000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2200000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:37:50.388020+00:00",
+          "rows": 100000,
+          "bytes": 23967979,
+          "sha256": "52b970c4db44d742d1defbb2708cc225c7e58b72677f5f1968ee5e7b7243814c"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02300000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2300000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2300000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:01.331001+00:00",
+          "rows": 100000,
+          "bytes": 23387069,
+          "sha256": "1ca72a27d6b297fbf4f803a706998aa665390abc6b242de1c81dc6e10de5f02d"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02400000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2400000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2400000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:00.538080+00:00",
+          "rows": 100000,
+          "bytes": 22361392,
+          "sha256": "fc04cb271e8ce80dd12656ae8ac3013ddc38f87ea171ac2d8550d8f45841220d"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02500000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2500000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2500000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:19.204186+00:00",
+          "rows": 100000,
+          "bytes": 22012484,
+          "sha256": "7aaf6e3dc647ff5db9f1966beba8039e47df9508a8806095bca3842e9e7c1202"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02600000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2600000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2600000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:27.858051+00:00",
+          "rows": 100000,
+          "bytes": 24316426,
+          "sha256": "38290c649a2b045006d6558d34b203ba78c0eea7bbf3a052279f2791052d8fe9"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02700000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2700000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2700000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:32.194340+00:00",
+          "rows": 100000,
+          "bytes": 25732838,
+          "sha256": "f855a390d0a6d0de9065d58d176f5812cf842b6e165ff9367a31a423d89978f2"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02800000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2800000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2800000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:40.076484+00:00",
+          "rows": 100000,
+          "bytes": 25826987,
+          "sha256": "88884da4a5c2704d94970ebdd1e353b93fb334e479103a22285dcd023d6f2b9e"
+        },
+        {
+          "path": "sources/vhwz-raag/page_02900000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=2900000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 2900000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:45.220670+00:00",
+          "rows": 100000,
+          "bytes": 25861970,
+          "sha256": "2a9233ad8a6ff020f8d9656911aae983eed0aed3da02588707aa0564432ba7e9"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03000000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3000000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3000000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:38:59.821954+00:00",
+          "rows": 100000,
+          "bytes": 26026865,
+          "sha256": "7018ad2491161359fbd51147120c8f2b2a28db2cdbb042614856bc8eb8235735"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03100000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3100000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3100000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:18.944217+00:00",
+          "rows": 100000,
+          "bytes": 25978599,
+          "sha256": "8125125a5ad4073c666c6d378fc362e72066c2143e6d24a99287bd535222968f"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03200000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3200000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3200000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:11.230594+00:00",
+          "rows": 100000,
+          "bytes": 24166627,
+          "sha256": "ccc837bf950aaecdd30e62cb74a53b886ce0af8f60942f62c5b1b37b8524a0f5"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03300000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3300000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3300000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:31.533641+00:00",
+          "rows": 100000,
+          "bytes": 23546599,
+          "sha256": "3366eee932d0e00bf2b80e54eba6de981e5db3a74f04b0a237089b14fffe0afe"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03400000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3400000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3400000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:33.258915+00:00",
+          "rows": 100000,
+          "bytes": 22855118,
+          "sha256": "7a4acd7a240af5c433701a45a6e29507d7a6f1e460df7bbe9480cd6bf3641c47"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03500000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3500000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3500000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:34.656685+00:00",
+          "rows": 100000,
+          "bytes": 21852103,
+          "sha256": "b1d8a3a0013331f6ed9324d21f94723014dad9243cd5b6a9fb3e1981a86412ba"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03600000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3600000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3600000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:40.015720+00:00",
+          "rows": 100000,
+          "bytes": 21782414,
+          "sha256": "3c948f3b49f101f5ec339921e45f5267770d2823682fcb0c7778a0e71bc9f9c9"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03700000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3700000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3700000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:49.174409+00:00",
+          "rows": 100000,
+          "bytes": 23935950,
+          "sha256": "d2e2e822b551b3ed2e5c6a9b2d5a86ff8edfbdfb809cdba1d10c9aa57a8866ea"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03800000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3800000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3800000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:42.772777+00:00",
+          "rows": 100000,
+          "bytes": 22687106,
+          "sha256": "d2c1e44ec6190a8e31d4ff42f1d21c2ddbf7cdeca22f94fc2537d4f1c9a13858"
+        },
+        {
+          "path": "sources/vhwz-raag/page_03900000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=3900000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 3900000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:51.803792+00:00",
+          "rows": 100000,
+          "bytes": 22791284,
+          "sha256": "c1b6c3150c10a8bce8d7176cfddd51cb00086dbdeaac9236148b7c63deb79182"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04000000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4000000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4000000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:39:52.315173+00:00",
+          "rows": 100000,
+          "bytes": 22732758,
+          "sha256": "dacef3564f773dd9c144a43861964993bbbca34b74c0aedc73052cba4a5ece1e"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04100000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4100000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4100000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:40:00.489422+00:00",
+          "rows": 100000,
+          "bytes": 22825005,
+          "sha256": "1c99dd2755f03105dced27357f5829f8b5aea902dd6f214031a3f6cffe298e61"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04200000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4200000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4200000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:40:11.141720+00:00",
+          "rows": 100000,
+          "bytes": 22755302,
+          "sha256": "988c01b671bad9784a0647d3076e972a0c6a479cef04c1282b01b99c0d2f1205"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04300000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4300000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4300000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:40:12.201950+00:00",
+          "rows": 100000,
+          "bytes": 23016366,
+          "sha256": "7846c79df30b2d7fee661f7fbb027e3fc9bac34cb3b944e0569753e55d8d6842"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04400000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4400000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4400000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:40:02.261618+00:00",
+          "rows": 100000,
+          "bytes": 21711365,
+          "sha256": "bed55eeb852802b3fa425496a2364f06e3042a7d306b145fc5de2623a3d0c877"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04500000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4500000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4500000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:40:17.476196+00:00",
+          "rows": 100000,
+          "bytes": 21650252,
+          "sha256": "6c0735b58df6103e13955b9ce2d7a3f5342a76abeb3ca94fa91e327088f30932"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04600000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4600000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4600000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:42:34.033273+00:00",
+          "rows": 100000,
+          "bytes": 23348634,
+          "sha256": "fe0213d41acb93937904409cb0bfb6eb815f58be0f16f48c6bbc55f28dd0663f"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04700000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4700000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4700000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:42:35.770796+00:00",
+          "rows": 100000,
+          "bytes": 22527715,
+          "sha256": "5d217eecff3735e9055fe90776d9ba00a4d826be7bc04af27519cc013a0ff933"
+        },
+        {
+          "path": "sources/vhwz-raag/page_04800000.csv",
+          "url": "https://data.transportation.gov/resource/vhwz-raag.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=4800000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 4800000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:42:48.493601+00:00",
+          "rows": 73122,
+          "bytes": 17233886,
+          "sha256": "849d4c40bb64d16904c2e8016615a5198fb486a5e3aa7ca54717ec6daab24dc3"
+        }
+      ]
+    },
+    {
+      "dataset_id": "m2f8-22s6",
+      "metadata_url": "https://data.transportation.gov/api/views/m2f8-22s6.json",
+      "name": "Crossing Inventory Data (Form 71) - Current",
+      "metadata_path": "sources/m2f8-22s6/metadata.json",
+      "metadata_sha256": "166c66d0ce13047ce3905d62db3b575466bb696adcaa77d052cb700fef65b4ee",
+      "rows_updated_at": 1788607159,
+      "filtered_rows": 276296,
+      "where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+      "pages": [
+        {
+          "path": "sources/m2f8-22s6/page_00000000.csv",
+          "url": "https://data.transportation.gov/resource/m2f8-22s6.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=0&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 0,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:43:11.363191+00:00",
+          "rows": 100000,
+          "bytes": 22255214,
+          "sha256": "20fcbd85107adbb9e1bba8d8674af5d4596e28a36515304de36ec88e2814be49"
+        },
+        {
+          "path": "sources/m2f8-22s6/page_00100000.csv",
+          "url": "https://data.transportation.gov/resource/m2f8-22s6.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=100000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 100000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:43:22.771138+00:00",
+          "rows": 100000,
+          "bytes": 24427863,
+          "sha256": "e0722643ca8e9a29e39dfb91f4f3a40e3db2102795a33260814dd335c7ba6dfb"
+        },
+        {
+          "path": "sources/m2f8-22s6/page_00200000.csv",
+          "url": "https://data.transportation.gov/resource/m2f8-22s6.csv?%24select=%3Aid+as+source_row_id%2Ccrossingid%2Clatitude%2Clongitude%2Ccountycode%2Ccountyname%2Cannualaveragedailytrafficcount%2Ctotaldaylightthrutrains%2Ctotalnighttimethrutrains%2Ctotaltransittrains%2Cmaximumtimetablespeed%2Cnumberofmaintracks%2Cnumberofsidingtracks%2Cnumberofyardtracks%2Cnumberofindustrytracks%2Cnumberoftransittracks%2Cnumbercrossbuckassemblies%2Ccountroadwaygatearms%2Cstatename%2Ccrossingtype%2Csignsorsignals%2Chighwaypaved%2Ccrossingilluminated%2Cwhistleban%2Crevisiondate%2Ccrossingidsuffix%2Ccrossingclosed%2Ccrossingposition%2Ccrossingpurpose%2Creporttype%2Creportstatus%2Creportingagencytype%2Cannualaveragedailytrafficyear%2Ctrainsperyear%2Cinstallationdateactivewa%2Cwhistledate&%24where=revisiondate+%3C+%272025-01-01%27+AND+reporttype+%3D+%27Major%27&%24order=%3Aid&%24offset=200000&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,crossingid,latitude,longitude,countycode,countyname,annualaveragedailytrafficcount,totaldaylightthrutrains,totalnighttimethrutrains,totaltransittrains,maximumtimetablespeed,numberofmaintracks,numberofsidingtracks,numberofyardtracks,numberofindustrytracks,numberoftransittracks,numbercrossbuckassemblies,countroadwaygatearms,statename,crossingtype,signsorsignals,highwaypaved,crossingilluminated,whistleban,revisiondate,crossingidsuffix,crossingclosed,crossingposition,crossingpurpose,reporttype,reportstatus,reportingagencytype,annualaveragedailytrafficyear,trainsperyear,installationdateactivewa,whistledate",
+            "$where": "revisiondate < '2025-01-01' AND reporttype = 'Major'",
+            "$order": ":id",
+            "$offset": 200000,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:43:13.563021+00:00",
+          "rows": 76296,
+          "bytes": 20201651,
+          "sha256": "dfd6ca60b54db1b770f6cebf5039651a466aff4943f80f12a3a6300263b24d4f"
+        }
+      ]
+    },
+    {
+      "dataset_id": "7wn6-i5b9",
+      "metadata_url": "https://data.transportation.gov/api/views/7wn6-i5b9.json",
+      "name": "Highway-Rail Grade Crossing Incident Data (Form 57)",
+      "metadata_path": "sources/7wn6-i5b9/metadata.json",
+      "metadata_sha256": "cb854321f956e0a20d68dee29d78767ba62a056c3ff6fc0ac359c9ea3efef7f7",
+      "rows_updated_at": 1788676168,
+      "filtered_rows": 36193,
+      "where": "date >= '2009-01-01' AND date < '2026-01-01'",
+      "pages": [
+        {
+          "path": "sources/7wn6-i5b9/page_00000000.csv",
+          "url": "https://data.transportation.gov/resource/7wn6-i5b9.csv?%24select=%3Aid+as+source_row_id%2Creportkey%2Cincidentnumber%2Cgradecrossingid%2Cdate%2Ccrossinguserskilled%2Ccrossingusersinjured&%24where=date+%3E%3D+%272009-01-01%27+AND+date+%3C+%272026-01-01%27&%24order=%3Aid&%24offset=0&%24limit=100000",
+          "query": {
+            "$select": ":id as source_row_id,reportkey,incidentnumber,gradecrossingid,date,crossinguserskilled,crossingusersinjured",
+            "$where": "date >= '2009-01-01' AND date < '2026-01-01'",
+            "$order": ":id",
+            "$offset": 0,
+            "$limit": 100000
+          },
+          "retrieved_at": "2026-09-06T10:44:01.852865+00:00",
+          "rows": 36193,
+          "bytes": 3466544,
+          "sha256": "298d946950da8e631d23b5650122c7f1951b8a2496ff5f64cd2fbc1df2c4a3e6"
+        }
+      ]
+    }
+  ],
+  "software": {
+    "python": "3.12.1",
+    "pandas": "3.0.3",
+    "duckdb": "1.5.4",
+    "numpy": "2.5.1"
+  },
+  "builder_sha256": "ab443e45b4edb75e6aeec421d345475d04cfd27d80e01121d90374302ba88adb",
+  "history_implementation_sha256": "8765b4efd926b4ae1281458256b6a73d81f9d5949ea89a62d2e8da1fcdb53aec",
+  "artifacts": [
+    {
+      "path": "data/cohort_audit.csv",
+      "sha256": "b9851bb586e10d62064706b4e52ade95f66abdf00d6eb93eb01c6454d776656c",
+      "bytes": 1429
+    },
+    {
+      "path": "data/crossing_year_panel.parquet",
+      "sha256": "7d86af206ccac817c4616ec5339c9d3cf8000362ad7afe47614e230b535520ac",
+      "bytes": 32800388
+    },
+    {
+      "path": "data/feature_missingness_by_year.csv",
+      "sha256": "e10dbd54a91bb0bd61a2d1acfc1a47ac23c2a14fdd440133c12e7739a9d3b069",
+      "bytes": 4317
+    },
+    {
+      "path": "data/incident_join_audit.csv",
+      "sha256": "76bed3abb2d59e0ef939f5eaf8ae1a7413ebb4e5b867ce28ee95fb435d53b560",
+      "bytes": 560
+    }
+  ]
+}

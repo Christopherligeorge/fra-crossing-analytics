@@ -1,0 +1,18 @@
+flowchart LR
+    H["Historical inventory"] --> S["stg inventory: normalize, preserve raw values"]
+    C["Current inventory"] --> S
+    S --> R["int revision periods: detect conflicts"]
+    R --> Y["int latest pre-year: eligibility and date masks"]
+    F["Form 57 reports"] --> T["stg reports"]
+    T --> A["int reports by crossing-year"]
+    A --> W["int prior-year history windows"]
+    Y --> W
+    Y --> M["fct crossing-year"]
+    W --> M
+    A --> M
+    S --> D["dim crossing: identity universe"]
+    T --> D
+    M --> P["Unchanged Python evaluation"]
+    M --> V["Verified dashboard summaries"]
+    P --> V
+

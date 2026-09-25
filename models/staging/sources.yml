@@ -1,0 +1,18 @@
+version: 2
+sources:
+  - name: fra
+    description: Frozen September 6, 2026 FRA extracts. Revision dates are not verified publication dates.
+    tables:
+      - name: inventory_history
+        description: "Form 71 full historical revisions; Socrata vhwz-raag. Preserve raw strings for conflict detection."
+        meta:
+          external_location: "read_csv('{{ env_var('FRA_SOURCES') }}/vhwz-raag/page_*.csv', header=true, all_varchar=true, union_by_name=true)"
+      - name: inventory_current
+        description: "Form 71 current full revisions; Socrata m2f8-22s6. Not a current-open cohort filter."
+        meta:
+          external_location: "read_csv('{{ env_var('FRA_SOURCES') }}/m2f8-22s6/page_*.csv', header=true, all_varchar=true, union_by_name=true)"
+      - name: reports
+        description: "Form 57 reports, 2009–2025; Socrata 7wn6-i5b9. A report is not a deduplicated accident."
+        meta:
+          external_location: "read_csv('{{ env_var('FRA_SOURCES') }}/7wn6-i5b9/page_*.csv', header=true, all_varchar=true, union_by_name=true)"
+

@@ -1,0 +1,64 @@
+{
+  "crossing_years": 1526612,
+  "crossings": 138245,
+  "positive_crossing_years": 20403,
+  "source_release": "2026-09-06",
+  "test_years": [
+    2024,
+    2025
+  ],
+  "kind": "verified full-data snapshot",
+  "parity": {
+    "rows": 1526612,
+    "reference_columns_compared": 55,
+    "missing_or_extra_keys": 0,
+    "column_mismatches": {},
+    "reference_sha256": "7d86af206ccac817c4616ec5339c9d3cf8000362ad7afe47614e230b535520ac",
+    "exact_value_parity": true,
+    "export_sha256": "aa29a8bcd04c320de5cac48ea9a92683c58c6cf79c37ca5749de4b90871715f3"
+  },
+  "evaluation": {
+    "all_six_ap_match": true,
+    "all_test_predictions_match": true,
+    "absolute_tolerance": 1e-12,
+    "panel_sha256": "aa29a8bcd04c320de5cac48ea9a92683c58c6cf79c37ca5749de4b90871715f3",
+    "predictions_sha256": "78e26a8a8a2603e7798c319e6e056ded9088fe7895d3b2173616446de0af7444",
+    "metrics_sha256": "413c3803a4eae8a48e4f2f8b780b9d4ec1877a3adf4e6a8bcd58b9366d7a8200",
+    "hgb_exposure_ap": 0.07661394857574302,
+    "hgb_history_ap": 0.10123781711931616,
+    "selected_calibration": {
+      "prevalence": "uncalibrated",
+      "exposure": "isotonic",
+      "history_only": "isotonic",
+      "full_logistic": "isotonic",
+      "hgb_exposure": "isotonic",
+      "hgb_history": "platt"
+    },
+    "split_counts": {
+      "fit": {
+        "rows": 1025297,
+        "crossings": 136984,
+        "positive_crossing_years": 13417,
+        "base_rate": 0.013085964359595317
+      },
+      "calibration": {
+        "rows": 125562,
+        "crossings": 125562,
+        "positive_crossing_years": 1765,
+        "base_rate": 0.01405680062439273
+      },
+      "selection": {
+        "rows": 124725,
+        "crossings": 124725,
+        "positive_crossing_years": 1723,
+        "base_rate": 0.013814391661655642
+      },
+      "test": {
+        "rows": 251028,
+        "crossings": 126447,
+        "positive_crossing_years": 3498,
+        "base_rate": 0.013934700511496725
+      }
+    }
+  }
+}

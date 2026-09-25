@@ -1,0 +1,174 @@
+version: 2
+models:
+  - name: stg_inventory_history
+    description: Raw-preserving historical inventory with normalized ID, parsed revision date and conflict fingerprint. Numeric casts happen after ambiguity detection.
+    columns: &inventory_columns
+      - name: source_row_id
+        description: Socrata row identifier, unique within this source only.
+        data_tests: [unique, not_null]
+      - name: crossing_id
+        description: Uppercase trimmed FRA crossing identifier; blank IDs become null.
+      - name: inventory_revisiondate
+        description: Parsed revision date, not verified publication time. Invalid dates become null and cannot enter the panel.
+  - name: stg_inventory_current
+    description: Current inventory full revisions normalized using the same rules as the historical source.
+    columns: *inventory_columns
+  - name: stg_reports
+    description: One row per Form 57 report. Duplicate keys fail, never silently deduplicate accidents.
+    columns:
+      - name: report_key
+        description: Source report identifier.
+        data_tests: [unique, not_null]
+      - name: crossing_id
+        description: Normalized identifier; reports outside eligible panel remain available for join auditing.
+        data_tests:
+          - relationships:
+              arguments: {to: "ref('dim_crossing')", field: crossing_id}
+  - name: int_inventory_revision_periods
+    description: One row per crossing and revision date, with ambiguity count and next date. Ineligible and ambiguous revisions still supersede earlier records.
+  - name: int_inventory_latest_pre_year
+    description: One eligible crossing/year with latest revision strictly before January 1 and future-dated measurements masked.
+  - name: int_reports_by_crossing_year
+    description: Report count and casualty sums per crossing/calendar year, including years before panel eligibility.
+  - name: int_history_windows
+    description: Strictly prior-calendar-year report windows; missing years are zero, recency is null without observed prior reports.
+    columns:
+      - name: latest_history_year
+        description: Maximum contributing report year, retained to audit the time boundary.
+  - name: dim_crossing
+    description: Identity-only dimension covering inventory and report IDs. Not the eligible population, not a latest-attributes dimension.
+    columns:
+      - name: crossing_id
+        description: Normalized FRA identifier, dimension primary key.
+        data_tests: [unique, not_null]
+      - name: in_inventory
+        description: At least one raw inventory row contains this ID.
+      - name: in_reports
+        description: At least one raw Form 57 report contains this ID.
+  - name: fct_crossing_year
+    description: One row per eligible crossing/prediction year, 2014–2025. Labels are Form 57 report occurrence, not verified accident absence. Retrospective revision-date reconstruction.
+    columns:
+      - name: crossing_id
+        description: Normalized crossing identifier; jointly unique with year.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments: {to: "ref('dim_crossing')", field: crossing_id}
+      - name: year
+        description: Prediction calendar year; inventory cutoff is January 1, history ends before this year.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments: {values: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], quote: false}
+      - name: had_incident
+        description: One if one or more Form 57 reports match this crossing/year; zero otherwise.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments: {values: [0, 1], quote: false}
+      - name: n_incidents
+        description: Number of Form 57 reports, not deduplicated accidents.
+      - name: inventory_age_years
+        description: Days from revision to January 1 divided by 365.25.
+      - name: availability_timestamp_verified
+        description: Always false; the sources cannot establish historical public availability.
+      - name: years_since_last_incident
+        description: Year minus last observed prior report year. Null if none; left-censored by the 2009 source boundary.
+      - name: prior_incident_count_1yr
+        description: Reports in year Y-1 only.
+      - name: prior_incident_count_3yr
+        description: Reports in calendar years Y-3 through Y-1, inclusive.
+      - name: prior_incident_count_5yr
+        description: Reports in calendar years Y-5 through Y-1, inclusive.
+      - name: prior_killed_5yr
+        description: Reported crossing-user fatalities in Y-5 through Y-1; not outcome-year casualties.
+      - name: prior_injured_5yr
+        description: Reported crossing-user injuries in Y-5 through Y-1; not outcome-year casualties.
+      - name: source_row_id
+        description: "Selected representative Socrata row ID; provenance only, not the crossing key."
+      - name: latitude
+        description: "Raw reported latitude; retained as source text, not a model feature in this benchmark."
+      - name: longitude
+        description: "Raw reported longitude; retained as source text."
+      - name: countycode
+        description: "Raw county code; leading zeros are preserved."
+      - name: countyname
+        description: "Reported county name at the selected revision."
+      - name: annualaveragedailytrafficcount
+        description: "AADT vehicle count; invalid, negative or measurement-year-at/after-Y values become null."
+      - name: totaldaylightthrutrains
+        description: "Reported daylight through trains; invalid, negative or train-year-at/after-Y values become null."
+      - name: totalnighttimethrutrains
+        description: "Reported nighttime through trains, subject to the same train-year mask."
+      - name: totaltransittrains
+        description: "Reported transit trains, subject to the same train-year mask."
+      - name: maximumtimetablespeed
+        description: "Reported maximum timetable speed; invalid or negative values become null."
+      - name: numberofmaintracks
+        description: "Main-track count at the selected revision; invalid or negative becomes null."
+      - name: numberofsidingtracks
+        description: "Siding-track count; invalid or negative becomes null."
+      - name: numberofyardtracks
+        description: "Yard-track count; invalid or negative becomes null."
+      - name: numberofindustrytracks
+        description: "Industry-track count; invalid or negative becomes null."
+      - name: numberoftransittracks
+        description: "Transit-track count; invalid or negative becomes null."
+      - name: numbercrossbuckassemblies
+        description: "Crossbuck-assembly count; invalid or negative becomes null."
+      - name: countroadwaygatearms
+        description: "Gate-arm count, additionally masked when the legacy-parsed installation date is at/after January 1."
+      - name: statename
+        description: "State reported at the selected historical revision."
+      - name: crossingtype
+        description: "Source crossing type; eligible facts are Public."
+      - name: signsorsignals
+        description: "Reported warning-device category, null when future installation masking applies."
+      - name: highwaypaved
+        description: "Reported paved-road category; not inferred from missingness."
+      - name: crossingilluminated
+        description: "Reported illumination category."
+      - name: whistleban
+        description: "Reported whistle-ban category, masked when the legacy-parsed whistle date is at/after January 1."
+      - name: revisiondate
+        description: "Unmodified source revision-date text."
+      - name: crossingidsuffix
+        description: "Source suffix retained for provenance; excluded from conflict comparison."
+      - name: crossingclosed
+        description: "Source status; eligible facts require No."
+      - name: crossingposition
+        description: "Source vertical relationship; eligible facts require At Grade."
+      - name: crossingpurpose
+        description: "Reported crossing purpose; all purposes including pedestrian are retained."
+      - name: reporttype
+        description: "Full revision report type from the frozen Major-only extract."
+      - name: reportstatus
+        description: "Source administrative status; excluded from conflict comparison."
+      - name: reportingagencytype
+        description: "Reporting agency category; excluded from conflict comparison."
+      - name: annualaveragedailytrafficyear
+        description: "Raw AADT measurement year used to determine the feature-date mask."
+      - name: trainsperyear
+        description: "Raw source train measurement-year field, interpreted according to the frozen baseline."
+      - name: installationdateactivewa
+        description: "Raw installation-date text; preserved legacy parsing is documented separately."
+      - name: whistledate
+        description: "Raw whistle-date text; preserved legacy parser is not a general date normalizer."
+      - name: inventory_revisiondate
+        description: "Parsed selected revision date; strictly before January 1 of prediction year."
+      - name: inventory_source_dataset
+        description: "Historical or current inventory dataset supplying the representative revision."
+      - name: future_aadt_masked
+        description: "True when the reported AADT measurement year is at/after prediction year."
+      - name: future_train_count_masked
+        description: "True when the reported train measurement year is at/after prediction year."
+      - name: future_warning_installation_masked
+        description: "True when the legacy-parsed warning installation date is at/after January 1."
+      - name: historical_eligibility
+        description: "Constant label describing open/public/at-grade eligibility by reported revision."
+      - name: n_killed
+        description: "Reported crossing-user deaths in the outcome year, integer-truncated as in the reference; never a predictor."
+      - name: n_injured
+        description: "Reported crossing-user injuries in the outcome year, integer-truncated as in the reference; never a predictor."
+      - name: latest_history_year
+        description: "Latest report year contributing to history; null without observed prior reports."
